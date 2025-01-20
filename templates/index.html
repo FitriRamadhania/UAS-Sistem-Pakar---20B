@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Application</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            background-image: url('/static/img/utama.jpeg'); /* Ubah path gambar sesuai kebutuhan */
+            background-size: cover;
+            background-position: top;
+            background-position-y: 12%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #000000;
+        }
+
+        #chat-container {
+            margin: 20px;
+        }
+
+        #response-container {
+            margin-top: 20px;
+        }
+
+        /* Tombol di pojok kiri bawah */
+        .bottom-left-btn {
+            position: fixed;
+            width: 175PX;
+            bottom: 100px;
+            left: 180px;
+            border-radius: 10px;
+            background-color: #E84A74;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        /*Tombol (i) About Us Kanan Atas */
+        .top-right-btn {
+            position: fixed;
+            width: 175px;
+            top: 15px;
+            right:-115px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .bottom-left-btn:hover {
+            background-color: #D43F63;
+        }
+    </style>
+</head>
+<body>
+    <a href="/coba" class="bottom-left-btn">Konsultasi Sekarang</a>
+    <script src="/static/script.js"></script>
+</body>
+
+<body class="top-right-btn">
+    <a href="/about" class="top-right-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 512"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336l24 0 0-64-24 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l48 0c13.3 0 24 10.7 24 24l0 88 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-80 0c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/>
+        </svg>
+    </a>
+    <script src="/static/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        body {
+            background-image: url('../static/img/aboutus.jpeg'); /* Ubah path gambar sesuai kebutuhan */
+            background-size: cover;
+            background-position: top;
+            background-position-y: 5%;
+            background-repeat: no-repeat;
+            
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        #chat-container {
+            margin: 20px;
+        }
+
+        #response-container {
+            margin-top: 20px;
+        }
+
+        /* Tombol di pojok kiri atas */
+        .bottom-left-btn {
+            position: top;
+            width: 175PX;
+            bottom: 200px;
+            left: 100px;
+            border-radius: 10px;
+            background-color:rgb(238, 94, 130);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .bottom-left-btn:hover {
+            background-color:rgb(223, 35, 79);
+        }
+    </style>
+</head>
+<body>
+    <script>
+      // Fungsi untuk kembali ke home
+      function goHome() {
+            window.location.href = '/';  // Mengarahkan ke halaman utama
+        }  
+    </script>
+    
+</body>
+<div class="flex h-screen">
+    <!-- Sidebar -->
+    <div class="w-1/4 bg-gray-800 text-white p-6"><div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-1/4 bg-gray-800 text-white p-6">
+          <h1 class="text-pink-400 font-bold text-2xl mb-4 cursor-pointer" onclick="window.history.back();">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20000 1200"><!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#00000" d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+            
+          </h1>
+    </div>
+</html>

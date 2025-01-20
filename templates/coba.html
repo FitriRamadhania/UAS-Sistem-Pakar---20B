@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBCheck</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #ffe0e9;
+        }
+
+        .sidebar {
+            width: 250px;
+            background: #f8a5b3;
+            color: #fff;
+            overflow-y: auto;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-button {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .home-button button, .clear-chat {
+            background-color: #ff5b77;
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .home-button button:hover, .clear-chat:hover {
+            background-color: #ff3b5e;
+            transform: scale(1.05);
+        }
+
+        .clear-chat {
+            background-color: #ff5b77;
+        }
+
+        .clear-chat:hover {
+            background-color: #ff3b5e;
+        }
+
+        .sidebar h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+            padding: 12px;
+            background-color: #ff7590;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #ff8ea8;
+            transform: translateX(5px);
+        }
+
+        .sidebar ul li span {
+            margin-left: 10px;
+        }
+
+        .chat-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: #ffe0e9;
+            border-left: 1px solid #ff9fb3;
+        }
+
+        .chat-header {
+            background-color: #ff8ea8;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-header img {
+            height: 50px;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .chat-footer {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #ff7590;
+            border-top: 1px solid #ff9fb3;
+        }
+
+        .chat-footer input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #ff9fb3;
+            margin-right: 10px;
+        }
+
+        .chat-footer button {
+            background-color: #ff5b77;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .chat-footer button:hover {
+            background-color: #ff3b5e;
+        }
+
+        .message {
+            padding: 10px 15px;
+            border-radius: 20px;
+            max-width: 70%;
+            word-wrap: break-word;
+            position: relative;
+            animation: fadeIn 0.5s;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            background-color: #ffb3c9;
+            color: #000;
+        }
+
+        .message.bot {
+            align-self: flex-start;
+            background-color: #ff8ea8;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chat-header button {
+            font-size: 14px;
+        }
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="home-button">
+            <button onclick="goHome()">Kembali</button>
+        </div>
+        <h3>Tips Bertanya</h3>
+        <ul id="chatHistory">
+            <li><i class="bi bi-chat"></i><span>Gunakan bahasa yang jelas</span></li>
+            <li><i class="bi bi-question-circle"></i><span>Tentukan tujuan pertanyaan</span></li>
+            <li><i class="bi bi-lightbulb"></i><span>Gunakan kata kunci yang relevan</span></li>
+        </ul>
+    </div>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="/static/img/logo.png" alt="B-Care Logo">
+        </div>
+        <div class="chat-body" id="chatMessages">
+            <div class="message bot">Halo! Ada yang bisa saya bantu?</div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="userInput" placeholder="Ketik pesan..." onkeypress="handleKeyPress(event)">
+            <button onclick="startVoiceRecognition()">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm7-3a1 1 0 0 0-2 0 5 5 0 0 1-10 0 1 1 0 0 0-2 0 7 7 0 0 0 6 6.92V20H9a1 1 0 0 0 0 2h6a1 1 0 0 0 0-2h-2v-2.08A7 7 0 0 0 19 11z"/></svg>
+            </button>
+            <button onclick="sendMessage()">
+                <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3.4 20.3l17-8.6c.7-.3.7-1.3 0-1.6l-17-8.6c-.6-.3-1.4.2-1.3.9L3 10l12 2-12 2-.8 6.7c-.1.8.7 1.3 1.2 1z"/></svg>
+            </button>
+            <button class="clear-chat" onclick="clearChat()">Hapus</button>
+        </div>
+    </div>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const chatHistory = document.getElementById('chatHistory');
+        const userInput = document.getElementById('userInput');
+    
+        // Fungsi untuk mengirim pesan
+        async function sendMessage() {
+            const message = userInput.value.trim();
+            if (!message) return;
+    
+            appendMessage(message, 'user');
+            userInput.value = '';
+    
+            try {
+                // Fixed URL construction
+                const response = await fetch(`/get?msg=${encodeURIComponent(message)}`);
+                const data = await response.json();
+    
+                setTimeout(() => {
+                    appendMessage(data, 'bot');
+                    addToHistory(message, data);
+                }, 1000);
+            } catch (error) {
+                console.error('Error:', error);
+                appendMessage('Maaf, terjadi kesalahan dalam memproses pesan Anda.', 'bot');
+            }
+        }
+    
+        // Fungsi untuk menampilkan pesan
+        function appendMessage(content, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+            messageDiv.textContent = content;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+    
+        // Fungsi untuk menambah percakapan ke riwayat
+        function addToHistory(question, answer) {
+            const historyItem = document.createElement('li');
+            historyItem.innerHTML = `<strong>Q:</strong> ${question}<br><strong>A:</strong> ${answer}`;
+            chatHistory.appendChild(historyItem);
+        }
+    
+        // Fungsi untuk menangani inputan dari keyboard
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+    
+        // Fungsi untuk mengenali suara dan mengirim pesan
+        function startVoiceRecognition() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'id-ID';
+            recognition.start();
+    
+            recognition.onresult = (event) => {
+                const transcript = event.results[0][0].transcript;
+                userInput.value = transcript;
+                sendMessage();
+            };
+    
+            recognition.onerror = (event) => {
+                console.error('Voice recognition error:', event.error);
+            };
+        }
+    
+        // Fungsi untuk menghapus chat
+        function clearChat() {
+            chatMessages.innerHTML = '';
+            appendMessage('Halo! Ada yang bisa saya bantu?', 'bot');
+        }
+    
+        // Fungsi untuk kembali ke home
+        function goHome() {
+            window.location.href = '/';
+        }
+    </script>
+</body>
+
+</html>
