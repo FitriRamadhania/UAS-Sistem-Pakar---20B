@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CornCare</title>
+    <link rel="stylesheet" href="../static/v.css">
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Tips Bertanya:</h2>
+        <ul>
+            <li>Gunakan Bahasa yang Jelas dan Sederhana</li>
+            <li>Sebutkan Tujuan atau Masalah secara Spesifik</li>
+            <li>Ajukan Pertanyaan Secara Bertahap</li>
+        </ul>
+        <button class="clear-chat">Clear Chat</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <img src="../logo.png" alt="CornCare Logo">
+            <h1>CornCare</h1>
+        </div>
+
+        <div id="response-area" class="content"></div> <!-- Area untuk pesan -->
+    </div>
+
+    <!-- Input Area -->
+    <div class="input-area">
+        <input type="text" id="user-query" placeholder="Konsultasi sekarang...">
+        <button id="send-button">Kirim</button>
+        <button class="voice-button" id="voice-button">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 14a3 3 0 0 0 3-3V5a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3zm6-3a6 6 0 0 1-12 0H4a8 8 0 0 0 16 0h-2zm-6 8a5 5 0 0 0 5-5h2a7 7 0 0 1-14 0h2a5 5 0 0 0 5 5z"></path>
+            </svg>
+        </button>
+    </div>
+    
+    <script src="../static/script.js"></script>
+</body>
+</html>

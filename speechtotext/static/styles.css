@@ -1,0 +1,410 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #e1f5e4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    color: #555;
+    font-size: 1rem;
+}
+
+.clear-chat {
+    margin-top: auto;
+    margin-bottom: auto;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.clear-chat:hover {
+    background-color: #e55050;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 50px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    margin-left: 250px; /* Account for the sidebar width */
+    overflow-y: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.header img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    margin: 0;
+}
+
+/* Message Area */
+.content {
+    background-color: #eaf4ec;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 600px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Chat Messages */
+.message {
+    padding: 12px 20px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+    max-width: 70%;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    word-wrap: break-word; /* Ensure long words wrap properly */
+}
+
+.user-message {
+    background-color: #4eb863;
+    color: white;
+    align-self: flex-end; /* Align user message to the right */
+    border-radius: 20px 20px 0 20px;
+    margin-left: auto; /* Ensure it aligns to the right */
+}
+
+.bot-message {
+    background-color: #ffffff;
+    color: #2c3e50;
+    align-self: flex-start; /* Align bot message to the left */
+    border-radius: 20px 20px 20px 0;
+    margin-right: auto; /* Ensure it aligns to the left */
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 250px; /* Adjusted for sidebar */
+    width: calc(100% - 250px); /* Take up remaining width */
+    background-color: white;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    border-top: 1px solid #ddd;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    z-index: 100; /* Ensure it's above other elements */
+    overflow: hidden; /* Prevent overflow */
+    max-width: 100%; /* Prevent input area from going beyond the viewport */
+}
+
+/* Input Area */
+.input-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: fixed;
+    bottom: 0;
+    left: 250px; /* Adjusted for sidebar */
+    width: calc(90% - 200px); /* Ensure it doesn't extend beyond the viewport */
+    max-width: 90%; /* Prevent input area from exceeding the viewport width */
+    background-color: #ffffff;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    padding: 12px 20px;
+    border-top: 1px solid #ddd;
+    justify-content: flex-start;
+    
+    box-sizing: border-box; /* Include padding and border in width calculation */
+    border-radius: 30px;
+    margin-right: 10%;
+    margin-left: 70px;
+}
+
+/* Input Field */
+.input-area input {
+    flex: 1;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #93d2c3;
+    border-radius: 50px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    box-sizing:border-box; /* Include padding in the width */
+
+}
+
+/* On focus, change the border color */
+.input-area input:focus {
+    border-color: #29ab6c;
+}
+
+/* Send Button */
+.input-area button {
+    background-color: #0a885c;
+    color: white;
+    border: none;
+    border-radius: 40px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-right: 20px;
+}
+
+/* Button hover effect */
+.input-area button:hover {
+    background-color: #1c6d27;
+}
+
+/* Voice Button */
+.voice-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    background-color: #7fe6bb;
+    border-radius: 50%;
+    border:none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voice-button svg {
+    fill: white;
+    width: 26px;
+    height: 26px;
+}
+
+.voice-button:hover {
+    background-color: #058276;
+}
+
+.voice-button.active {
+    animation: pulse 1s infinite;
+}
+
+/* Pulse effect */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 12px rgba(0, 128, 0, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+/* Ensure no overflow */
+.input-area {
+    overflow: hidden;
+}
+
+
+
+.voice-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    background-color: #7fe6bb;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.voice-button svg {
+    fill: white;
+    width: 26px;
+    height: 26px;
+}
+
+.voice-button:hover {
+    background-color: #058276;
+}
+
+.voice-button.active {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 12px rgba(0, 128, 0, 0.5);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+    }
+}
+
+.text-to-speech-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    background-color: #f4a261;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    margin-left: 12px;
+}
+
+.text-to-speech-button svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+}
+
+.text-to-speech-button:hover {
+    background-color: #e76f51;
+}
+
+/* Adjust for small screens */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+        padding: 15px;
+    }
+
+    .main-content {
+        margin-left: 200px; /* Adjust for smaller sidebar */
+        padding: 15px;
+    }
+
+    .input-area {
+        left: 200px; /* Adjust for smaller sidebar */
+        width: calc(100% - 200px); /* Adjust width */
+        padding: 10px;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+        margin: 0;
+    }
+
+    .content {
+        max-height: 250px;
+        padding: 15px;
+    }
+
+    .message {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+
+    .voice-button {
+        width: 44px;
+        height: 44px;
+    }
+
+    .text-to-speech-button {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+/* Mobile View - Smaller devices (adjust sidebar and content) */
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: none;
+        margin-bottom: 15px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .input-area {
+        left: 0;
+        width: 100%;
+        padding: 8px 15px;
+    }
+
+    .content {
+        padding: 10px;
+    }
+
+    .message {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .voice-button,
+    .text-to-speech-button {
+        width: 40px;
+        height: 40px;
+    }
+}
